@@ -1,0 +1,46 @@
+#include "./headers/fillit.h"
+
+static int is_valid_char(char c)
+{
+	return (c == '.' || c == '#') ? 1 : 0;
+}
+
+static int list_pieces_valid(t_list **list)
+{
+	t_list *tmp;
+	
+	tmp = *list;
+	ft_putstr("Validating Pieces... \n");
+	return 1;
+}
+
+static int list_chars_valid(t_list **list)
+{
+	t_list *tmp;
+	int index;
+	char c;
+	
+	tmp = *list;
+	while (tmp && (index = -1))
+	{
+		while ((c = *(tmp->data + ++index)))
+			if((index % 5) == 4 && (c == '\n'))
+				continue ;
+			else if((index == 20) && c == '\0')
+				continue ;
+			else if (is_valid_char(c))
+				continue ;
+			else
+				return (0);
+		tmp = tmp->next;
+	}
+	//	ft_putstr("Yaasss\n");
+	return (1);
+}
+
+int list_is_valid(t_list *list)
+{
+	ft_putstr("Validating characters... \n");
+	ft_putnbr(list_chars_valid(&list));
+	return (list_chars_valid(&list)) ? list_pieces_valid(&list) : 0;
+}
