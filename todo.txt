@@ -1,0 +1,7 @@
+TODO LIST: add anything you can think of 
+1. create a new modified ft_strstr that returns only the section of string that matches a tetri shape (could we use strnstr? idk either.)
+2. list_pre_check->valid_pieces: change "if statment" to exit if one of the strings don't:
+	a. match a shape
+	b. have exactly 4 #'s.
+	c. doesn't return (ft_strlen(tetri) % 16 == 0)
+3. fillit algorithm (lol)

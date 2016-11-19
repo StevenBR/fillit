@@ -1,0 +1,7 @@
+/*==== creating new libft.a file and replacing old one =======*/
+/* (same thing goes for changing list functions in liblist */
+cd libft
+make re 
+rm ../lib/libft.a
+cp libft.a ../lib/
+

@@ -6,11 +6,12 @@
 /*   By: srodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 23:49:34 by srodrigu          #+#    #+#             */
-/*   Updated: 2016/11/16 19:43:08 by srodrigu         ###   ########.fr       */
+/*   Updated: 2016/11/18 00:11:03 by srodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./headers/fillit.h"
+#include "./headers/libft.h"
 
 //int is_validchar()
 //{
@@ -28,7 +29,7 @@ void create_tetris_list(char *str, t_list **list, int nbr_pieces)
 		*(tetri + (20)) = '\0';
 		while ((count < 20) && (*str))
 			*(tetri + count++) = *(str++);
-		ft_list_push_back(list, tetri);
+		ft_list_push_back(list, ft_trim_newline(tetri));
 		str++;
 	}
 }
