@@ -6,25 +6,15 @@
 /*   By: srodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 22:50:39 by srodrigu          #+#    #+#             */
-/*   Updated: 2016/11/18 23:09:13 by srodrigu         ###   ########.fr       */
+/*   Updated: 2016/11/18 23:17:34 by srodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./headers/fillit.h"
 #include "tetri-all.c"
-//#define T1 "###.\n..#.\n....\n....\n"
-//#define T2 "#.\n#.\n##\n"
-const char shape[] = {"###.\n..#.\n....\n....\n"};
-//	{'#', '.', '.', '.},
-//	{'.', '.', '.', '.'},
-//	{'.', '.', '.', '.'}
-//};
-const char const_shape[][21] = {
-	{'#', '#', '#', '.'},
-	{'#', '.', '.', '.'},
-	{'.', '.', '.', '.'},
-	{'.', '.', '.', '.'}
-};
+//we'll probably want to use this const format to save our shapes. and put them in or create a header file for them.
+//const char shape[] = {"###.\n..#.\n....\n....\n"};
+
 //by the time you get here you know the string characters are valid already, you are just checking the shape.
 static int	list_pieces_valid(t_list **list)
 {
