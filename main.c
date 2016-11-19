@@ -6,7 +6,7 @@
 /*   By: srodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 03:32:04 by srodrigu          #+#    #+#             */
-/*   Updated: 2016/11/11 03:32:06 by srodrigu         ###   ########.fr       */
+/*   Updated: 2016/11/18 23:20:08 by srodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int main(int ac, char **av)
 {
+	/* Be back soon, don't miss me too much <3 
+	 * ps. it's ok to cry :') */
 	t_list *list;
 
 	list = 0;
