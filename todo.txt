@@ -3,5 +3,6 @@ TODO LIST: add anything you can think of
 2. list_pre_check->valid_pieces: change "if statment" to exit if one of the strings don't:
 	a. match a shape (after we add the shapes to tetri-all.c)
 	b. have exactly 4 #'s.
-	c. doesn't return (ft_strlen(tetri) % 16 == 0)
-3. fillit algorithm (lol)
+	c. doesn't return (ft_strlen(tetri) != 16)
+3. add all of the shapes to tetri-all.c
+4. fillit algorithm (lol)
