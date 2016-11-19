@@ -6,7 +6,7 @@
 /*   By: srodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 22:50:39 by srodrigu          #+#    #+#             */
-/*   Updated: 2016/11/18 23:17:34 by srodrigu         ###   ########.fr       */
+/*   Updated: 2016/11/18 23:27:07 by srodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include "tetri-all.c"
 //we'll probably want to use this const format to save our shapes. and put them in or create a header file for them.
 //const char shape[] = {"###.\n..#.\n....\n....\n"};
+
+//if we add this to our libft we could use this in ft_trim_newline
+//(basically doing it with the helper function there)
+//ft_count_char(char *str, char <character_to_be_counted>)
 
 //by the time you get here you know the string characters are valid already, you are just checking the shape.
 static int	list_pieces_valid(t_list **list)
