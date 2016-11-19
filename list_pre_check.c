@@ -6,7 +6,7 @@
 /*   By: srodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 22:50:39 by srodrigu          #+#    #+#             */
-/*   Updated: 2016/11/18 22:13:04 by srodrigu         ###   ########.fr       */
+/*   Updated: 2016/11/18 22:58:10 by srodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ const char const_shape[][21] = {
 	{'.', '.', '.', '.'},
 	{'.', '.', '.', '.'}
 };
-//by the time you get here you know the tetris pieces are valid alread, you are just checking the shape.
+//by the time you get here you know the string characters are valid already, you are just checking the shape.
 static int	list_pieces_valid(t_list **list)
 {
 	t_list *tmp;
-	//unsigned int flag;
 
 	ft_putstr("test define\n");
 //	ft_putstr("t1: \n");
@@ -42,12 +41,15 @@ static int	list_pieces_valid(t_list **list)
 	ft_putstr(T7);
 	while (tmp)
 	{
-		//this 'if statement' currently shows if and what we matched.
-		//we eventually want it to exit if one of the strings dont match a shape. otherwise continue
-		//we need to cycle through the tetris shapes that are in tetri-all.c
-//		ft_putstr(tmp->data);
+		//ft_putstr(tmp->data);
+		
+/*we could us this if statement for the exit check stated below*/
 		//if (!(ft_strstr(tmp->data, <one_of_the_tetris_shapes>)))
 		//	exit (1);
+		
+		//'if statement' below currently shows if and what we matched.
+		//we eventually want it to exit if one of the strings Don't match a shape. otherwise continue
+		//we need to cycle through the tetris shapes that are in tetri-all.c
 		if (ft_strstr(tmp->data, T7))
 		//if (ft_strcmp((const char *)tmp->data, (const char *)T7) == 0)
 		{
@@ -77,6 +79,7 @@ static int	list_chars_valid(t_list **list)
 			return (0);
 		while ((c = *(tmp->data + ++index)))
 		{
+			//commented code: prints current index and character at that index
 			//ft_putstr("current index: ");
 			//ft_putnbr(index);
 			//ft_putchar('\n');
@@ -91,6 +94,7 @@ static int	list_chars_valid(t_list **list)
 	return (1);
 }
 
+// commented code: runs through the list without actually checking the characters. (used for testing)
 /*
 static int	list_chars_valid(t_list **list)
 {
@@ -113,4 +117,13 @@ static int	list_chars_valid(t_list **list)
 int			list_is_valid(t_list *list)
 {
 	return (list_chars_valid(&list) && list) ? list_pieces_valid(&list) : 0;
+
+	//the return above is the "buched together" version of the code below.
+	//the code below is broken up but works the same. use either.
+	/*	if (!(list_chars_valid(&list) && list))
+		return (0);
+	if (!(list_pieces_valid(&list)))
+		return (0);
+	return (1);
+	*/
 }
