@@ -13,14 +13,17 @@
 #include "./headers/fillit.h"
 #include "./headers/libft.h"
 
+
 void create_tetris_list(char *str, t_list **list, int nbr_pieces)
 {
 	int count;
 	char *tetri;
 	
   	ft_putnbr(nbr_pieces);
+  	write(1, "\n", 1);
 	//tetris pieces will have all of the characters until we us ft_trim_newline
-	while(*str && (tetri = (char *)malloc(sizeof(char) * 21)) && !(count = 0))
+	while(*str && (tetri 
+		= (char *)malloc(sizeof(char) * 21)) && !(count = 0))
 	{
 		*(tetri + (20)) = '\0';
 		while ((count < 20) && (*str))
@@ -31,18 +34,38 @@ void create_tetris_list(char *str, t_list **list, int nbr_pieces)
 	}
 }
 
+void	covert_to_tertrimino(char *buffer)
+{
+	char **store;
+
+	store = (char **)malloc(sizeof(char *) * 4);
+
+}
+
+int		valid_file(char *buffer, int chars_read)
+{
+	while (chars_read > 0)
+	{
+		return (buffer[chars_read - 1] != '#' || buffer[chars_read - 1] != '.'
+		|| buffer[chars_read - 1] != '\n' || buffer[chars_read - 1] != '\0')
+		chars_read--;
+	}
+}
+
 void file_read_create(char *file_name, t_list **list)
 {
 	char buffer[546];
 	ft_memset(buffer, '\0', 546);
 	int fd;
-	int blocks_read;
+	int chars_read;
 	
 	if ((fd = open(file_name, O_RDONLY)) == -1)
 		return ft_putstr("Open file:  ERROR");
-	blocks_read = read(fd, buffer, 546) ;
-	if (!(blocks_read % 21))
+	chars_read = read(fd, buffer, 546);
+	if (valid_file(buffer, chars_read) == 0)
+	{
 		create_tetris_list(buffer, list, blocks_read);
+	}
 	else
 		ft_putstr("Read file:  ERROR\n");
 	close(fd);
