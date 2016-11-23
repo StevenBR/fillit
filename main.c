@@ -19,10 +19,15 @@ int main(int ac, char **av)
 	t_list *list;
 
 	list = 0;
-	(ac != 2) ? (ft_putstr("Incorrect # of parameters"))
-		: (file_read_create(*(av + 1), &list));
-	(list_is_valid(list)) ? ft_putstr("valid list: :D\n")
-		: ft_putstr("invalid list: :/");
+	if (ac != 2)
+		(ft_putstr("Incorrect # of parameters"))
+	else
+	{
+		(file_read_create(*(av + 1), &list));
+		validate_tetrimino(list);
+	}
+	// (list_is_valid(list)) ? ft_putstr("valid list: :D\n")
+	// 	: ft_putstr("invalid list: :/");
 	//	if(ac != 2)
 //		ft_putstr("Incorrect number of parameters");
 //	else
