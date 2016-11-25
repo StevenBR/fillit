@@ -13,33 +13,51 @@
 #include "./headers/fillit.h"
 #include "./headers/libft.h"
 
-
-// void create_tetris_list(char *buffer, t_list **list, int chars_read)
-// {
-// 	int count;
-	
-//   	//ft_putnbr(nbr_pieces);
-//   	write(1, "\n", 1);
-// 	//tetris pieces will have all of the characters until we us ft_trim_newline
-
-// 		//ft_trim_newline returns char *, we use the functions return in the list.
-		
-// 	}
-// }
-
-int	validate_tertrimino(t_list *list)
+int		*chars_between_hashes(t_list *list) //helper function
 {
-	int idx;
-	t_list *curr;
+	int	flag;
+	int inbetween;
+	char *curr;
+	int i;
+	int *chars_between_hashes;
 
-	curr = list;
-	while (curr)
+	if (!(chars_between_hashes = (int *)malloc(sizeof(int) * 3)));
+		return (NULL);
+	i = 0;
+	flag = 0;
+	inbetween = 0;
+	while (list && i < 0)
 	{
-		if (ft_strcmp(curr->data, g_tetriminos[i]) != 0)
-			return (0);
-		curr = list->next;
+		if (*(curr++) != '#' && flag == 0)
+		else if (*(curr++) == '#')
+			flag = 1;
+		else if (*(curr++) != '#')
+			inbetween++;
+		chars_between_hashes[i--] = inbetween;
 	}
-	return (1);
+	return (chars_between_hashes);
+}
+
+int	is_valid_tetrimino(t_list *list)
+{
+	int i;
+	int j;
+	int *solution;
+
+	i = 19;
+	j = 3;
+	solution = chars_between_hashes(list);
+	while (i >= 0)
+	{
+		while (j >= 0)
+		{
+			if (solution[j] == g_inbetween[i][j])
+				return (1);
+			j--;
+		}
+		i--;
+	}
+	return (0);
 }
 
 int		valid_file(char *buffer, int chars_read)
