@@ -12,14 +12,14 @@ OFLAGS		=	-c $(CFLAGS)
 
 		#  libs & link cmd	#
 LIB_DIR		=	./lib/
-LIB_LINKS	=	-lft -llist
-LINK_LIBS	=	-L$(LIB_DIR) $(LIB_LINKS)
+LIB_LINKS	=	-lftjoanna -llist
+LINK_LIBS	=	-L $(LIB_DIR) $(LIB_LINKS)
 
 
 		#	  files/folders		#
 OBJ_DIR		=	./obj
 MAIN		=	main.c
-CFILES		=	read_create.c	\
+CFILES		=	read_create.c
 				list_pre_check.c
 ###OFILES		=	$(addprefix $(OBJ_DIR),$(SRC:.c=.o))
 OFILES		= $(CFILES:.c=.o)
@@ -36,7 +36,6 @@ clean:
 
 fclean: clean
 	/bin/rm -rf $(NAME).a
-
 re: fclean all
 
 .PHONY: all clean re fclean
