@@ -20,11 +20,13 @@ int main(int ac, char **av)
 
 	list = 0;
 	if (ac != 2)
-		(ft_putstr("Incorrect # of parameters"))
+		(ft_putstr("Incorrect # of parameters"));
 	else
 	{
 		(file_read_create(*(av + 1), &list));
-		validate_tetrimino(list);
+		if(!(is_valid_tetrimino(list)))
+			return (0);
+		create_initial_board();
 	}
 	// (list_is_valid(list)) ? ft_putstr("valid list: :D\n")
 	// 	: ft_putstr("invalid list: :/");
