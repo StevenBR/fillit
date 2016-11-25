@@ -28,9 +28,54 @@ typedef enum {
 	t18,
 } termo;
 
+char	g_tetriminos[19][20] = {
+	{ "####" },
+	{"#...\n#...\n#...\n#"},
+	{"##.\n##"},
+	{"#...\n##..\n.#"},
+	{ "##..\n.##" },
+	{ "#..\n##..\n#" },
+	{ "##..\n##" },
+	{ "#..\n.#..\n##" },
+	{ "#...\n###" },
+	{  "###.\n..#" },
+	{  "##..\n#...\n#" },
+	{  "#..\n###" },
+	{  "#...\n##..\n#" },
+	{  "###.\n.#" },
+	{  "#..\n##..\n.#" },
+	{  "#...\n#...\n##" },
+	{  "###.\n#" },
+	{  "##..\n.#..\n.#" },
+	{  "#.\n###" }
+};
+
+int g_inbetween[19][3] = {
+	{0, 0, 0},
+	{4, 4, 4},
+	{0, 2, 0},
+	{4, 0, 4},
+	{0, 4, 0},
+	{3, 0, 3},
+	{0, 3, 0},
+	{4, 3, 0},
+	{4, 0, 0},
+	{0, 0, 4},
+	{0, 3, 4},
+	{3, 0, 0},
+	{4, 0, 3},
+	{0, 0, 3},
+	{3, 0, 4},
+	{4, 4, 0},
+	{0, 0, 2},
+	{0, 4, 4},
+	{2, 0, 0}
+};
+
 void file_read_create(char *file_name, t_list **list);
 //void create_tetris_list(char *str, t_list **list);
-void create_tetris_list(char *str, t_list **list, int nbr_pieces);
+//void create_tetris_list(char *str, t_list **list, int nbr_pieces);
+int	validate_tertrimino(t_list *list);
 int list_is_valid(t_list *list);
 
 #endif
