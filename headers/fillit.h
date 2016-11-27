@@ -65,7 +65,10 @@ void shift_tetrimino(char **tetrimino);
 int		valid_file(char *buffer, int chars_read);
 int		*chars_between_hashes(t_list *list);
 int	is_valid_tetrimino(char **tetrimino);
-char **create_initial_board(void);
-char *copy_lst_content(t_list *list, char **fourbyfourboard);
+char **create_board(int size);
+int		can_place(char **tetrimino, char **board, int size, t_pos pos);
+char *place_tet(char **tetrimino, char **board, int size);
 char			*ft_strndup(char *s, size_t n);
+char *place_tet(char **tetrimino, char **board, int size);
+
 #endif
