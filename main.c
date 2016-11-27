@@ -12,21 +12,57 @@
 
 #include "./headers/fillit.h"
 
+
+
 int main(int ac, char **av)
 {
 	/* Be back soon, don't miss me too much <3 
 	 * ps. it's ok to cry :') */
 	t_list *list;
+	t_list *curr;
+	int	num_tets;
+	char ***tetriminos;
 
+	
 	list = 0;
 	if (ac != 2)
-		(ft_putstr("Incorrect # of parameters"));
+	{
+		(ft_putstr("error"));
+		return (1);
+	}
 	else
 	{
-		(file_read_create(*(av + 1), &list));
-		if(!(is_valid_tetrimino(list)))
-			return (0);
-		create_initial_board();
+		file_read_create(av[1], &list);
+		num_tets = 0;
+		curr = list;
+		while (curr)
+		{
+			printf("%s\n", curr->data);
+			num_tets++;
+			curr = curr->next;
+		}
+		printf("mallocking\n");
+		tetriminos = (char ***)malloc(sizeof(char **) * num_tets);
+		num_tets = 0;
+		curr = list;
+		printf("malloc completed\n");
+		while (curr)
+		{
+			tetriminos[num_tets] = convert_1d_to_2d(list->data);
+			shift_tetrimino(tetriminos[num_tets]);
+			int i = 0;
+			while (i < 4)
+			{
+				printf("%s\n", tetriminos[num_tets][i++]);
+			}
+			if(is_valid_tetrimino(tetriminos[num_tets]) == 0)
+			{
+				ft_putstr("error");
+				return (1);
+			}
+			curr = curr->next;
+		}
+		// create_initial_board();
 	}
 	// (list_is_valid(list)) ? ft_putstr("valid list: :D\n")
 	// 	: ft_putstr("invalid list: :/");

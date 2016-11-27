@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "./headers/fillit.h"
-#include "tetri-all.c"
 
 char *copy_lst_content(t_list *list, char **fourbyfourboard)
 {
@@ -20,14 +19,17 @@ char *copy_lst_content(t_list *list, char **fourbyfourboard)
 
 	x = 0;
 	y = 0;
-	while (list->data)
+	data = 0;
+	while (list)
 	{
 		while (y <= 3)
 		{
 			while (x <= 3)
 			{
 				if (data == "#")
-					ft_strcpy((fourbyfourboard[y][x]), data[x])
+					ft_strcpy((fourbyfourboard[y][x]), data[x]);
+				else
+					data++;
 				x++;
 			}
 			y++;
@@ -35,7 +37,7 @@ char *copy_lst_content(t_list *list, char **fourbyfourboard)
 	}
 }
 
-char **create_initial_board(void)
+char **create_initial_board(void) //creates initial board to fit first piece
 {
 	char **fourbyfourboard;
 	char *rows;
@@ -67,36 +69,15 @@ char **create_initial_board(void)
 	return (fourbyfourboard);
 }
 
-
-char **first_piece_on_board(t_list *list)
+/*
+char **print_map(t_list *list, char **fourbyfourboard)
 {
-	char **fourbyfourboard;
-	char *rows;
 	int x;
 	int y;
 
-	x = 0;
-	y = 0;
-	if (!(fourbyfourboard = (char **)malloc(sizeof(char *) * 4)))
-		return (0);
-	while (y <= 3)
+	while (fourbyfourboard[y] > 0)
 	{
-		while (x < 4)
-		{
-			if (!(rows = (char *)malloc(sizeof(char) * 5)))
-				return (0);
-			rows[x] = '.';
-			ft_putchar(rows[x]);
-			if (x == 3)
-			{
-				rows[x] = '\n';
-				ft_putchar(rows[x]);
-			}
-			x++;
-		}
-		x = 0;
-		y++;
+		ft_putstr(&fourbyfourboard[y]);
 	}
-
-	return (fourbyfourboard);
 }
+*/
