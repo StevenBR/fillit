@@ -13,10 +13,10 @@ CC		=	gcc
 all: $(NAME)
 
 $(NAME): $(OFILES)
-	ar -rc $(NAME) $(OFILES)
+	ar -rc $(NAME) $(OFILES) 
 
 $(OFILES): $(CFILES)
-	$(CC) $(CFLAGS) $(CFILES)
+	$(CC) $(CFLAGS) $(CFILES) 
 
 library_a: $(OFILES)
 	ar -rc ./liblist.a $(OFILES)
