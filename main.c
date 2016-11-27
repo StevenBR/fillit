@@ -21,6 +21,7 @@ int main(int ac, char **av)
 	t_list *list;
 	t_list *curr;
 	int	num_tets;
+	int size;
 	char ***tetriminos;
 
 	
@@ -62,6 +63,10 @@ int main(int ac, char **av)
 			}
 			curr = curr->next;
 		}
+		size = 2;
+		while (size * size < 4 * num_tets)
+			size++;
+		create_board(size);
 		// create_initial_board();
 	}
 	// (list_is_valid(list)) ? ft_putstr("valid list: :D\n")
