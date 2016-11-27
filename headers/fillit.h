@@ -3,8 +3,9 @@
 # define _FILLIT_H
 #include <unistd.h>
 #include <fcntl.h>
-#include "list.h"
 #include "libft.h"
+#include "list.h"
+#include <stdio.h>
 
 typedef enum {
 	t0,
@@ -28,54 +29,43 @@ typedef enum {
 	t18,
 } termo;
 
-char	g_tetriminos[19][20] = {
-	{ "####" },
-	{"#...\n#...\n#...\n#"},
-	{"##.\n##"},
-	{"#...\n##..\n.#"},
-	{ "##..\n.##" },
-	{ "#..\n##..\n#" },
-	{ "##..\n##" },
-	{ "#..\n.#..\n##" },
-	{ "#...\n###" },
-	{  "###.\n..#" },
-	{  "##..\n#...\n#" },
-	{  "#..\n###" },
-	{  "#...\n##..\n#" },
-	{  "###.\n.#" },
-	{  "#..\n##..\n.#" },
-	{  "#...\n#...\n##" },
-	{  "###.\n#" },
-	{  "##..\n.#..\n.#" },
-	{  "#.\n###" }
-};
 
-int g_inbetween[19][3] = {
-	{0, 0, 0},
-	{4, 4, 4},
-	{0, 2, 0},
-	{4, 0, 4},
-	{0, 4, 0},
-	{3, 0, 3},
-	{0, 3, 0},
-	{4, 3, 0},
-	{4, 0, 0},
-	{0, 0, 4},
-	{0, 3, 4},
-	{3, 0, 0},
-	{4, 0, 3},
-	{0, 0, 3},
-	{3, 0, 4},
-	{4, 4, 0},
-	{0, 0, 2},
-	{0, 4, 4},
-	{2, 0, 0}
-};
 
-void file_read_create(char *file_name, t_list **list);
-//void create_tetris_list(char *str, t_list **list);
-//void create_tetris_list(char *str, t_list **list, int nbr_pieces);
-int	validate_tertrimino(t_list *list);
-int list_is_valid(t_list *list);
+typedef struct	s_pos
+{
+	int row;
+	int col;
+}				t_pos;
 
+// int g_inbetween[19][3] = {
+// 	{0, 0, 0},
+// 	{4, 4, 4},
+// 	{0, 2, 0},
+// 	{4, 0, 4},
+// 	{0, 4, 0},
+// 	{3, 0, 3},
+// 	{0, 3, 0},
+// 	{4, 3, 0},
+// 	{4, 0, 0},
+// 	{0, 0, 4},
+// 	{0, 3, 4},
+// 	{3, 0, 0},
+// 	{4, 0, 3},
+// 	{0, 0, 3},
+// 	{3, 0, 4},
+// 	{4, 4, 0},
+// 	{0, 0, 2},
+// 	{0, 4, 4},
+// 	{2, 0, 0}
+// };
+
+void 	file_read_create(char *file_name, t_list **list);
+char **convert_1d_to_2d(char *tetrimino1d);
+void shift_tetrimino(char **tetrimino);
+int		valid_file(char *buffer, int chars_read);
+int		*chars_between_hashes(t_list *list);
+int	is_valid_tetrimino(char **tetrimino);
+char **create_initial_board(void);
+char *copy_lst_content(t_list *list, char **fourbyfourboard);
+char			*ft_strndup(char *s, size_t n);
 #endif
