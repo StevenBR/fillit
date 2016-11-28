@@ -92,26 +92,33 @@ void shift_tetrimino(char **tetrimino)
 	t_pos pos;
 	t_pos min;
 
+	pos.col = -1;
 	pos.row = -1;
 	min.col = 4;
 	min.row = 4;
+	printf("pos col: %d, pos row: %d\n", pos.col, pos.row);
 	while (++(pos.row) < 4 && (pos.col = -1))
+	{
 		while (++(pos.col) < 4)
 		{
 			if (tetrimino[pos.row][pos.col] == '#' && pos.col < min.col)
 				min.col = pos.col;
 			if (tetrimino[pos.row][pos.col] == '#' && pos.row < min.row)
-				min.row = pos.row;
+				min.row = pos.row;	
 		}
+	}
+	printf("2) pos col: %d, pos row: %d\n", pos.col, pos.row);
 	printf("min col: %d, min row: %d\n", min.col, min.row);
 	pos.row = -1;
-	while (++(pos.row) < 4 && (pos.col = -1))
+	while (++(pos.row) < 4 && (pos.col = -1) && ((min.col != 0) || (min.row != 0)))
 		while (++(pos.col) < 4)
+		{
 			if (tetrimino[pos.row][pos.col] == '#')
 			{
 				tetrimino[pos.row - min.row][pos.col - min.col] = '#';
 				tetrimino[pos.row][pos.col] = '.';
 			}
+		}
 	printf("shifting done\n");
 }
 
@@ -134,11 +141,7 @@ int	is_valid_tetrimino(char **tetrimino)
 			pos.col = -1;
 			while (++(pos.col) < 4)
 				if (g_tetriminos[i][j++] == '#' && tetrimino[pos.row][pos.col] == '#')
-				{
-					printf("hash found at %d, %d\n", pos.row, pos.col);
-					printf("# hashes: %d\n", hashes_found);
 					hashes_found++;
-				}
 			j++;
 		}
 		i++;
@@ -148,7 +151,6 @@ int	is_valid_tetrimino(char **tetrimino)
 			return (1);
 		}
 	}
-	printf("valid check failed\n");
 	return (0);
 }
 
@@ -187,7 +189,7 @@ void file_read_create(char *file_name, t_list **list) //can't do % 21 because th
 		// create_tetris_list(buffer, list, chars_read);
 		else
 		{
-			printf("chars read: %d\n", chars_read);
+			//printf("chars read: %d\n", chars_read);
 			ft_putstr("Read file:  ERROR\n");
 			exit(1);
 		}
@@ -195,5 +197,5 @@ void file_read_create(char *file_name, t_list **list) //can't do % 21 because th
 	
 	close(fd);
 
-	printf("EVERYTHING IS VALID!\n");
+	//printf("EVERYTHING IS VALID!\n");
 }
