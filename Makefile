@@ -19,8 +19,8 @@ LINK_LIBS	=	-L $(LIB_DIR) $(LIB_LINKS)
 		#	  files/folders		#
 OBJ_DIR		=	./obj
 MAIN		=	main.c
-CFILES		=	read_create.c 
-				# list_pre_check.c
+CFILES		=	read_create.c \
+				list_pre_check.c solve.c
 ###OFILES		=	$(addprefix $(OBJ_DIR),$(SRC:.c=.o))
 OFILES		= $(CFILES:.c=.o)
 
