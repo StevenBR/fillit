@@ -67,8 +67,10 @@ int		*chars_between_hashes(t_list *list);
 int	is_valid_tetrimino(char **tetrimino);
 char **create_board(int size);
 int		can_place(char **tetrimino, char **board, int size, t_pos pos);
-char *place_tet(char **tetrimino, char **board, int size);
+char **place_tet(char **tetrimino, char **board, int size);
 char			*ft_strndup(char *s, size_t n);
-char *place_tet(char **tetrimino, char **board, int size);
+void print_map(char **board, int size);
+char **size_map(int size, int num_tets);
+int	solve(char **tetrimino, char **board, int size, t_pos pos, int num_tets);
 
 #endif
